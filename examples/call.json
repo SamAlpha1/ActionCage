@@ -1,0 +1,7 @@
+{
+  "tool": "shell",
+  "arguments": {
+    "command": "rm -rf build"
+  }
+}
+

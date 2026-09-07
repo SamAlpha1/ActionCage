@@ -1,0 +1,10 @@
+cff-version: 1.2.0
+message: "If you use ActionCage, cite the canonical repository."
+title: "ActionCage"
+type: software
+authors:
+  - name: "SamAlpha1"
+repository-code: "https://github.com/SamAlpha1/ActionCage"
+url: "https://github.com/SamAlpha1/ActionCage"
+license: MIT
+date-released: 2026-09-07

@@ -1,0 +1,36 @@
+[policy]
+version = "2026-09-07"
+
+[defaults]
+decision = "review"
+
+[[rules]]
+id = "deny-recursive-delete"
+effect = "deny"
+priority = 100
+tools = ["shell", "exec_*"]
+reason = "Recursive deletion requires an explicit, separate approval path."
+
+[rules.argument_regex]
+command = '''(?i)(^|\s)(rm\s+-rf|Remove-Item\s+.*-Recurse)'''
+
+[[rules]]
+id = "deny-secret-exfiltration"
+effect = "deny"
+priority = 100
+tools = ["http_*", "browser_*"]
+reason = "Possible secret included in an outbound request."
+
+[rules.argument_regex]
+body = '''(?i)(api[_-]?key|authorization|private[_-]?key)'''
+
+[[rules]]
+id = "allow-unit-tests"
+effect = "allow"
+priority = 20
+tools = ["shell", "exec_*"]
+reason = "Local unit-test command."
+
+[rules.argument_regex]
+command = '''^(pytest|python\s+-m\s+pytest)(\s|$)'''
+
